@@ -1,7 +1,8 @@
 import random
-suits = ("Spades", "Hearts", "Clubs", "Diamonds")
-ranks = ("two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king", "ace")
-values = {"two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10, "jack": 10, "queen": 10, "king": 10, "ace": 11}
+suits = ('Spades', 'Hearts', 'Clubs', 'Diamonds')
+ranks = ('two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king', 'ace')
+values = {'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10, 
+          'jack': 10, 'queen': 10, 'king': 10, 'ace': 11}
 class Cards:
     def __init__(self, suit, rank):
         self.suit = suit
@@ -27,35 +28,36 @@ class Hand:
     def add_card(self,card):
         self.cards.append(card)
         self.value+=values[card.rank]
-        if card.rank=="ace":
+        if card.rank=='ace':
             self.aces+=1
     def adjust_for_ace(self):
         while self.value>21 and self.aces:
             self.value-=10
             self.aces-=1
 def show_some(player,dealer):
-    print("\ndealershand:", *dealer.cards,sep="\n ")
+    print("\ndealershand:", *dealer.cards,sep='\n ')
     print("dealershand=", dealer.value)
-    print("\nplayershand:", player.cards,sep="\n ")
+    print("\nplayershand:", *player.cards,sep='\n ')
     print("playershand=", player.value)
 def show_all(player,dealer):
-    print("\ndealershand:", *dealer.cards,sep="\n ")
+    print("\ndealershand:", *dealer.cards,sep='\n ')
     print("dealershand=", dealer.value)
-    print("\nplayershand:", player.cards,sep="\n ")
+    print("\nplayershand:", *player.cards,sep='\n ')
     print("playershand=", player.value)
-def hs(deck,hand):
+def hs(deck, hand):
     global playing
     while True:
-        choice = input("hit me (h) or stay (s)")
-        if choice.lower()=="h":
+        choice = input("hit me 'h' or stay 's'")
+        if choice.lower()=='h':
             hand.add_card(deck.deal())
             hand.adjust_for_ace()
-        elif choice.lower()=="s":
+        elif choice.lower()=='s':
             print("chicken")
             playing = False
         else:
             print("stupid nincompoop")
             continue
+        break
 def bussin(player,dealer):
     print("player busts you suck at this game go do something better you stupid ignorant pos go buy scratchers or sum you cannot gamble for crap if you dont tell me to stop ill keep going, you are wasting your money sheldon")
 def thedub(player,dealer):

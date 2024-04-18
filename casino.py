@@ -10,6 +10,9 @@ def main():
         if choice == 1:
             credits = play_blackjack(credits)
         #if choice == 2:
+        elif choice == 4:
+            print("cya")
+            break
         else:
             print("we dont have that hear pardner")
 if __name__ == "__main__":
